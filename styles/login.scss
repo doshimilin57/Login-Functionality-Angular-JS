@@ -1,0 +1,142 @@
+$login-color:$white;
+$login-bgcolor:#158cbe;
+
+[jedi-login]{
+	// background-color:$login-bgcolor;
+	background-image: -webkit-linear-gradient(top, rgba(21, 140, 190, 0.7) 0%, rgba(41, 137, 216, 0.85) 50%, $login-bgcolor 100%);
+	background-image: linear-gradient(to bottom, rgba(21, 140, 190, 0.7) 0%, rgba(41, 137, 216, 0.85) 50%, $login-bgcolor 100%);
+	color:$login-color;
+	margin-left:auto;
+	margin-right:auto;
+	padding:0.5rem 0 2.0rem 0;
+	text-align:center;
+	width:100%;
+	h1 {
+		margin-bottom:0.5rem;
+	}
+	h2 {
+		font-weight:400;
+		line-height:1.25em;
+		margin:0.5rem 0;
+	}
+	img.header-icon {
+		border-radius:50%;
+		display:inline-block;
+		height:2.75rem;
+		margin:0;
+		padding:0;
+		width:2.75rem;
+	}
+	fieldset.callout {
+		background-color:shade($login-bgcolor, 25%);
+		margin:0 2.0rem;
+		padding:0.5rem 1.25rem 0;
+		padding-bottom: 1rem;
+
+		field {
+			display:block;
+			position:relative;
+			label {
+				position:absolute;
+				left:0;
+				top:0;
+				transition: all $transition-time linear;
+				font-size:0.6875rem;
+			}
+		}
+		field.pristine > label {
+			opacity:0;
+			top:0.25rem;
+		}
+		field.dirty > label {
+			opacity:1;
+			top:0;
+		}
+		input {
+			background-color:shade($login-bgcolor, 25%);
+			color:$login-color;
+			height:2.375rem;
+			margin:0.8125rem 0 0.25rem 0;
+		}
+		input[type="checkbox"], input[type="radio"] {
+			font-size:1.5rem;
+			height:1.5rem;
+			line-height:1rem;
+			margin:0.75rem 0;
+			opacity:1;
+			width:1.5rem;
+		}
+		input[type="checkbox"]:after {
+			background:$login-color;
+			border:0.125rem solid #cfcdd0;
+			border-radius:0.125rem;
+			content:"";
+			display:block;
+			height:1.4375rem;
+			overflow:auto;
+			padding:0;
+			visibility:visible;
+			width:1.4375rem;
+			z-index:10;
+		}
+		label:hover input[type="checkbox"]:after, label:focus input[type="checkbox"]:after {
+			border-color:$accent-blue-dark !important;
+		}
+		label:hover input[type="checkbox"]:checked:after, label input[type="checkbox"]:focus:checked:after {
+			border-color:$accent-blue-dark;
+			background-color:$accent-blue-dark;
+		}
+		input[type="checkbox"]:checked:after {
+			background-color:$accent-green-dark;
+			border-color:$accent-green-dark;
+			content:'x';
+			font-weight:700;
+			font-size:1.5rem;
+			line-height:1rem;
+			padding-left:0.25rem;
+		}
+		input[type="checkbox"] + span {
+			font-weight:700;
+		}
+	}
+	input[type="submit"] {
+		background-color:$login-color;
+		color:$accent-blue;
+		display:inline-block;
+		margin:1.25rem 0 0 0;
+		width:50%;
+		&[disabled] {
+			opacity:0.5;
+		}
+	}
+	.error {
+		color:#fdb1b7;
+		margin:0.5rem 0 1.0rem 0;
+	}
+	.submit .error {
+		text-shadow: -0.0625rem 0 $error-color, 0 0.0625rem $error-color, 0.0625rem 0 $error-color, 0 -0.0625rem $error-color;
+	}
+	ul {
+		font-weight:700;
+		list-style-type:none;
+		margin:0;
+		padding-left:0;
+		li {
+			display:inline-block;
+			a {
+				border-bottom:0.0625rem solid $login-color;
+				color:$login-color !important;
+				padding-bottom:0.1875rem;
+				text-decoration:none;
+			}
+		}
+		li:before {
+			content:'\2022';
+			margin:0 0.625rem 0 0.5rem;
+		}
+		li:first-child:before, li.first:before {
+			content:'';
+			margin:0;
+		}
+	}
+}

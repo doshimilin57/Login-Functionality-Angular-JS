@@ -1,0 +1,170 @@
+<div class="container login" >
+	<h1>
+		<img ng-if="vm.loginContent.view.logo.url" ng-src="{{vm.loginContent.view.logo.url}}" alt="{{vm.loginContent.view.logo.value}}" />
+		<span ng-if="!vm.loginContent.view.logo.url" ng-bind-html="vm.loginContent.view.logo.value"></span>
+	</h1>
+	<h2>
+		<img ng-src="{{vm.loginContent.view.header.image.url}}" alt="{{vm.loginContent.view.header.image.value}}" class="header-icon" /><br />
+		<span ng-bind-html="vm.loginContent.view.header.value"></span>
+	</h2>
+	<!-- <form-builder role="form" name="login" data="vm.loginContent.sections[1]"></form-builder>Tabling formBuilder for now to get POC working -->
+
+	<!-- REMOVE ONCE FORMBUILDER WORKING -->
+	<form name="formLogin" class="" ng-submit="vm.attemptLogin(vm.loginData)" ng-show="vm.myVariable" ng-hide="!vm.myVariable">
+		<fieldset class="callout">
+			<field ng-class="{pristine: !vm.loginData[vm.loginContent.view.fieldsets[0].fields[0].id], dirty: vm.loginData[vm.loginContent.view.fieldsets[0].fields[0].id]}">
+				<label for="{{vm.loginContent.view.fieldsets[0].fields[0].id}}">
+					<span ng-bind-html="vm.loginContent.view.fieldsets[0].fields[0].label"></span>
+					<span class="vh" ng-bind-html="vm.loginContent.view.fieldsets[0].fields[0].addText"></span>
+				</label>
+				<input
+					id="{{vm.loginContent.view.fieldsets[0].fields[0].id}}"
+					type="{{vm.loginContent.view.fieldsets[0].fields[0].type}}"
+					ng-class="{required: vm.loginContent.view.fieldsets[0].fields[0].required, pristine: !vm.loginData[vm.loginContent.view.fieldsets[0].fields[0].id], dirty: vm.loginData[vm.loginContent.view.fieldsets[0].fields[0].id]}"
+					aria-describedby="tooltip-{{vm.loginContent.view.fieldsets[0].fields[0].id}} {{vm.loginContent.view.fieldsets[0].fields[0].id}}-error"
+					ng-required="vm.loginContent.view.fieldsets[0].fields[0].required"
+					ng-model="vm.loginData[vm.loginContent.view.fieldsets[0].fields[0].id]"
+					placeholder="{{vm.loginContent.view.fieldsets[0].fields[0].label}}"
+					data-label="{{vm.loginContent.view.fieldsets[0].fields[0].label}}"
+					name="{{vm.loginContent.view.fieldsets[0].fields[0].id}}"
+					ng-attr-required="vm.loginContent.view.fieldsets[0].fields[0].required || undefined"
+				/>
+			</field>
+
+			<field ng-class="{pristine: !vm.loginData[vm.loginContent.view.fieldsets[0].fields[1].id], dirty: vm.loginData[vm.loginContent.view.fieldsets[0].fields[1].id]}">
+				<label for="{{vm.loginContent.view.fieldsets[0].fields[1].id}}">
+					<span ng-bind-html="vm.loginContent.view.fieldsets[0].fields[1].label"></span>
+					<span class="vh" ng-bind-html="vm.loginContent.view.fieldsets[0].fields[1].addText"></span>
+				</label>
+				<input
+					id="{{vm.loginContent.view.fieldsets[0].fields[1].id}}"
+					type="{{vm.loginContent.view.fieldsets[0].fields[1].type}}"
+					ng-class="{required: vm.loginContent.view.fieldsets[0].fields[1].required, pristine: !vm.loginData[vm.loginContent.view.fieldsets[0].fields[1].id], dirty: vm.loginData[vm.loginContent.view.fieldsets[0].fields[1].id]}"
+					aria-describedby="tooltip-{{vm.loginContent.view.fieldsets[0].fields[1].id}} {{vm.loginContent.view.fieldsets[0].fields[1].id}}-error"
+					ng-required="vm.loginContent.view.fieldsets[0].fields[1].required"
+					ng-model="vm.loginData[vm.loginContent.view.fieldsets[0].fields[1].id]"
+					placeholder="Password"
+					data-label="{{vm.loginContent.view.fieldsets[0].fields[1].label}}"
+					name="{{vm.loginContent.view.fieldsets[0].fields[1].id}}"
+					ng-attr-required="vm.loginContent.view.fieldsets[0].fields[1].required || undefined"
+				/>
+			</field>
+
+			<label for="{{vm.loginContent.view.fieldsets[0].fields[2].id}}">
+				<input
+					id="{{vm.loginContent.view.fieldsets[0].fields[2].id}}"
+					type="{{vm.loginContent.view.fieldsets[0].fields[2].type}}"
+					ng-class="{hastooltip: field.tooltip, required: vm.loginContent.view.fieldsets[0].fields[2].required}"
+					aria-describedby="tooltip-{{vm.loginContent.view.fieldsets[0].fields[2].id}} {{vm.loginContent.view.fieldsets[0].fields[2].id}}-error"
+					ng-disabled="vm.loginContent.view.fieldsets[0].fields[2].disabled"
+					ng-required="vm.loginContent.view.fieldsets[0].fields[2].required"
+					ng-model="vm.loginData[vm.loginContent.view.fieldsets[0].fields[2].id]"
+					data-label="{{vm.loginContent.view.fieldsets[0].fields[2].label}}"
+					name="{{vm.loginContent.view.fieldsets[0].fields[2].id}}"
+				/>
+				<span ng-bind-html="vm.loginContent.view.fieldsets[0].fields[2].label"></span>
+				<span class="vh" ng-bind-html="vm.loginContent.view.fieldsets[0].fields[2].addText"></span>
+			</label>
+		</fieldset>
+			<div class="" ng-show="!vm.myToggle" ng-bind-html="vm.loginData.data[0].error" ></div>
+
+		<div class="submit">
+			<input type="submit" value="Sign in" ng-disabled="formLogin.$invalid">
+			<div class="error" ng-bind-html="vm.loginData.error"></div>
+		</div>
+
+	</form>
+
+	<form name="formchallenge" class="" ng-submit="vm.attemptchallenge(vm.challengeData)" ng-show="!vm.myVariable" ng-hide="vm.myVariable">
+		<fieldset class="callout">
+			<field ng-class="{pristine: !vm.challengeData[vm.challengeContent.view.fieldsets[0].fields[0].id], dirty: vm.challengeData[vm.challengeContent.view.fieldsets[0].fields[0].id]}">
+				<label for="{{vm.challengeContent.view.fieldsets[0].fields[0].id}}">
+					<span ng-bind-html="vm.challengeContent.view.fieldsets[0].fields[0].label"></span>
+					<span class="vh" ng-bind-html="vm.challengeContent.view.fieldsets[0].fields[0].addText"></span>
+				</label>
+				<h2> <span ng-bind-html="vm.loginData.data[0].heading"></span></h2>
+				<div class="" ng-bind-html="vm.loginData.data[0].question"></div>
+<!-- 				<div> <h2> Please provide answer to the challenge question below. </h2> </div>
+				<div> What is your mother's maiden name? </div> -->
+				<!-- <input
+					id="{{vm.challengeContent.view.fieldsets[0].fields[0].id}}"
+					type="{{vm.challengeContent.view.fieldsets[0].fields[0].type}}"
+					ng-class="{required: vm.challengeContent.view.fieldsets[0].fields[0].required, pristine: !vm.challengeData[vm.challengeContent.view.fieldsets[0].fields[0].id], dirty: vm.challengeData[vm.challengeContent.view.fieldsets[0].fields[0].id]}"
+					aria-describedby="tooltip-{{vm.challengeContent.view.fieldsets[0].fields[0].id}} {{vm.challengeContent.view.fieldsets[0].fields[0].id}}-error"
+					ng-required="vm.challengeContent.view.fieldsets[0].fields[0].required"
+					ng-model="vm.challengeData[vm.challengeContent.view.fieldsets[0].fields[0].id]"
+					placeholder="{{vm.challengeContent.view.fieldsets[0].fields[0].label}}"
+					data-label="{{vm.challengeContent.view.fieldsets[0].fields[0].label}}"
+					name="{{vm.challengeContent.view.fieldsets[0].fields[0].id}}"
+					ng-attr-required="vm.challengeContent.view.fieldsets[0].fields[0].required || undefined"
+				/> -->
+			</field>
+
+			<field ng-class="{pristine: !vm.challengeData[vm.challengeContent.view.fieldsets[0].fields[1].id], dirty: vm.challengeData[vm.challengeContent.view.fieldsets[0].fields[1].id]}">
+				<label for="{{vm.challengeContent.view.fieldsets[0].fields[1].id}}">
+					<span ng-bind-html="vm.challengeContent.view.fieldsets[0].fields[1].label"></span>
+					<span class="vh" ng-bind-html="vm.challengeContent.view.fieldsets[0].fields[1].addText"></span>
+				</label>
+				<input
+					id="{{vm.challengeContent.view.fieldsets[0].fields[1].id}}"
+					type="{{vm.challengeContent.view.fieldsets[0].fields[1].type}}"
+					ng-class="{required: vm.challengeContent.view.fieldsets[0].fields[1].required, pristine: !vm.challengeData[vm.challengeContent.view.fieldsets[0].fields[1].id], dirty: vm.challengeData[vm.challengeContent.view.fieldsets[0].fields[1].id]}"
+					aria-describedby="tooltip-{{vm.challengeContent.view.fieldsets[0].fields[1].id}} {{vm.challengeContent.view.fieldsets[0].fields[1].id}}-error"
+					ng-required="vm.challengeContent.view.fieldsets[0].fields[1].required"
+					ng-model="vm.challengeData[vm.challengeContent.view.fieldsets[0].fields[1].id]"
+					placeholder="Submit Your Answer"
+					data-label="{{vm.challengeContent.view.fieldsets[0].fields[1].label}}"
+					name="{{vm.challengeContent.view.fieldsets[0].fields[1].id}}"
+					ng-attr-required="vm.challengeContent.view.fieldsets[0].fields[1].required || undefined"
+				/>
+			</field>
+
+			<!-- <label for="{{vm.challengeContent.view.fieldsets[0].fields[2].id}}">
+				<input
+					id="{{vm.challengeContent.view.fieldsets[0].fields[2].id}}"
+					type="{{vm.challengeContent.view.fieldsets[0].fields[2].type}}"
+					ng-class="{hastooltip: field.tooltip, required: vm.challengeContent.view.fieldsets[0].fields[2].required}"
+					aria-describedby="tooltip-{{vm.challengeContent.view.fieldsets[0].fields[2].id}} {{vm.challengeContent.view.fieldsets[0].fields[2].id}}-error"
+					ng-disabled="vm.challengeContent.view.fieldsets[0].fields[2].disabled"
+					ng-required="vm.challengeContent.view.fieldsets[0].fields[2].required"
+					ng-model="vm.challengeData[vm.challengeContent.view.fieldsets[0].fields[2].id]"
+					data-label="{{vm.challengeContent.view.fieldsets[0].fields[2].label}}"
+					name="{{vm.challengeContent.view.fieldsets[0].fields[2].id}}"
+				/>
+				<span ng-bind-html="vm.challengeContent.view.fieldsets[0].fields[2].label"></span>
+				<span class="vh" ng-bind-html="vm.challengeContent.view.fieldsets[0].fields[2].addText"></span>
+			</label> -->
+		</fieldset>
+
+		<div class="submit">
+			<input type="submit" value="Submit" ng-disabled="formchallenge.$invalid">
+			<div class="error" ng-bind-html="vm.challengeData.error"></div>
+		</div>
+	</form>
+
+
+
+
+	<!-- END REMOVE -->
+
+	<ul>
+		<li ng-repeat="link in vm.loginContent.view.button" ng-class="{'first':$first}"><a href="{{link.link.path}}" ng-bind-html='link.value + (link.addText ? "<span class=\"vh\">"+link.addText+"</span>" : "")' ng-attr-data-icon="{{link.icon ? link.icon : ''}}"></a></li>
+	</ul>
+
+</div>
+<!-- <div class="container login" ng-if ="!vm.myVariable">
+<h1>
+		<img ng-if="vm.loginContent.view.logo.url" ng-src="{{vm.loginContent.view.logo.url}}" alt="{{vm.loginContent.view.logo.value}}" />
+		<span ng-if="!vm.loginContent.view.logo.url" ng-bind-html="vm.loginContent.view.logo.value"></span>
+	</h1>
+	<h2>
+		<img ng-src="{{vm.loginContent.view.header.image.url}}" alt="{{vm.loginContent.view.header.image.value}}" class="header-icon" /><br />
+		<span ng-bind-html="vm.loginContent.view.header.value"></span>
+	</h2>
+
+</div> -->
+
+
+
+
+
